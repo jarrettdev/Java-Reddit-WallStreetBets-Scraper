@@ -116,15 +116,10 @@ public class BigCharts {
 
     }
 
-    // METHOD TO FIX BELOW
     void findStock() throws Exception {
         fixedUrl = url + "symb=" + getHotStock() + "&insttype=&freq=1&show=&time=8";
         System.out.println(fixedUrl);
         bc = (Jsoup.connect(fixedUrl).get());
-//        for (Element price : bc.select("#quote > tbody > tr:nth-child(3) > td.last > div")) {
-//            System.out.println("entry found");
-//            System.out.println(price.text());
-//        }
         Elements ding = bc.select("#quote > tbody > tr:nth-child(3) > td.last > div");
         if (!ding.text().equals("")) {
             System.out.println("not null hoe");
@@ -144,43 +139,6 @@ public class BigCharts {
             } else {
                 System.out.println("not gonna buy " + getHotStock() + " b/c " + getStockPrice() + " is more than " + getBpCalc());
             }
-//
-//        WebDriverWait wait = new WebDriverWait(chromeDriver, 4);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(searchBarXPath)));
-//        WebElement searchBar = chromeDriver.findElement(By.xpath(searchBarXPath));
-//        ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].value='" + getHotStock()  + "'", searchBar);
-//        searchBar.sendKeys(Keys.ENTER);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(headingXPath)));
-//
-//        if (!chromeDriver.getPageSource().contains("Last:")) {
-//            isPresent = true;
-//        } else {
-//            isPresent = false;
-//        }
-//
-//        if (isPresent) {
-//            System.out.println(getHotStock() + " does not exist!");
-//            invalidStocks.add(getHotStock());
-//            chromeDriver.get("https://www.bigcharts.marketwatch.com/");
-//        }else {
-//            chromeDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(priceXPath)));
-//            WebElement stockPriceValue = chromeDriver.findElement(By.xpath(priceXPath));
-//            String stockValueString = stockPriceValue.getText();
-//            String newNew = stockValueString.replaceAll(",", "");
-//            System.out.println(getHotStock() + " : $" + newNew);
-//            setStockPrice(Double.parseDouble(newNew));
-//            System.out.println("Fixed price : $" + getStockPrice());
-//            if (getStockPrice() <= getBpCalc()) {
-//                System.out.println("BUY " + getHotStock() + "!!!!!");
-//                stocksToBuy.add(getHotStock());
-//                chromeDriver.get("https://www.bigcharts.marketwatch.com/");
-//            } else {
-//                System.out.println("not gonna buy " + getHotStock() + " b/c " + getStockPrice() + " is more than " + getBpCalc());
-//                chromeDriver.get("https://www.bigcharts.marketwatch.com/");
-//            }
-//
-//        }
 
 
         } else {
@@ -189,8 +147,6 @@ public class BigCharts {
         }
 
         badBoyStocks = invalidStocks.stream().distinct().collect(Collectors.toList());
-
-
     }
 
     void loadRobinhood() {
@@ -223,7 +179,6 @@ public class BigCharts {
             options = new ChromeOptions();
             options.addArguments("user-data-dir=C:/Users/me/AppData/Local/Google/Chrome/User Data/");
             options.addArguments("profile-directory=Profile 1");
-            //options.setHeadless(true);
             System.setProperty("webdriver.chrome.driver", "C:\\Selenium Drivers\\chromedriver.exe");
             robinhoodDriver = new ChromeDriver(options);
             robinhoodDriver.get(url);
@@ -245,13 +200,6 @@ public class BigCharts {
                 if (!robinhoodDriver.getPageSource().contains("Such 404")) {
 
                     wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("5Y")));
-////        WebElement searchBar = robinhoodDriver.findElement(By.xpath("//*[@id=\"react-select-search--value\"]/div[2]"));
-////        searchBar.click();
-////        Thread.sleep(400);
-////        ((JavascriptExecutor) robinhoodDriver).executeScript("arguments[0].value='" + stockToBuy + "'", searchBar);
-////        searchBar.sendKeys(stockToBuy);
-////        searchBar.sendKeys(Keys.ENTER);
-////        robinhoodDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
                     WebElement fiveYearView = robinhoodDriver.findElement(By.partialLinkText("5Y"));
                     fiveYearView.click();
                     Thread.sleep(1500);
@@ -273,21 +221,13 @@ public class BigCharts {
                     } else if (oneYearReturns != 0.0) {
                         purchasedStocks.add(stockToBuy);
                         System.out.println("BUYING STOCK");
-                        //WebElement buyingPowerTab = robinhoodDriver.findElement(By.partialLinkText("Buying Power"));
-                        //System.out.println("BUYING POWER FOUND FOR " + stockToBuy);
-                        //setBuyingPower(Double.parseDouble(buyingPowerTab.getText().substring(buyingPowerTab.getText().indexOf("$"), buyingPowerTab.getText().indexOf(" "))));
                         WebElement quantBox = robinhoodDriver.findElement(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/div/main/div[2]/div[2]/div/form/div[1]/div[1]/div[1]/label/div[2]/input"));
                         quantBox.sendKeys(Integer.toString(quan));
                         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/div/main/div[2]/div[2]/div/form/div[1]/div[2]/div/div[2]/button")));
                         WebElement reviewOrderButton = robinhoodDriver.findElement(By.xpath("//*[contains(text(), 'Review Order')]"));
                         reviewOrderButton.click();
-                        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/div/main/div[2]/div[2]/div/form/div[1]/div[3]/div/div[2]/button[1]/span")));
-                        //System.out.println((buyingPowerTab.getText().substring(buyingPowerTab.getText().indexOf("$"), buyingPowerTab.getText().indexOf(" "))));
                         Thread.sleep(2000);
                         WebElement submitPurchase = robinhoodDriver.findElement(By.xpath("//*[contains(text(), 'Submit Buy')]"));
-                        //WebElement submitPurchase = robinhoodDriver.findElement(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/div/main/div[2]/div[2]/div/form/div[1]/div[3]/div/div[2]/button[1]/span"));
-                        //submitPurchase.click();
-                        //Thread.sleep(3500);
                         System.out.println(stockToBuy + " BOUGHT");
 
                     } else {
