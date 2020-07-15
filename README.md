@@ -1,5 +1,7 @@
 # Java-Reddit-WallStreetBets-Scraper
 
+![](https://github.com/jarrettdev/Java-Reddit-WallStreetBets-Scraper/blob/master/resources/WSB%20pic.jpg)
+
 ## What is this?
 
 -This is my first personal project. 
