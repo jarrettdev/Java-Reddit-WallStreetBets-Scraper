@@ -22,7 +22,7 @@
 
 - After each 15 minutes, the program would check Robinhood to see if any shares reached the selling point (+/- 5.0%) and if so, sell. Then, the program would run another Reddit scan to look for new stocks and repeat the process. 
 
-### More info
+## More info
 
 - There is a blacklist for comment characters that are mistaked for stocks (verified_baddies.txt) and for characters that were taken out of context. (ex: THICC, YOLO, NUGS)
 
@@ -31,7 +31,7 @@
 - The locators are strictly XPath.
 
 
-### Conclusion
+## Conclusion
 
 - There are a lot of beginner mistakes in the code (class names, variable names, poor annotations, not leveraging oop principles, repetitive code), but for me, the best way to learn is to come accross the mistakes by myself. 
 
