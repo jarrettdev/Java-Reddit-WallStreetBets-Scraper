@@ -137,11 +137,6 @@ public class Bing {
         finalBingURL = (begBingURL + getHotStock() + "%20Stock" + endBingURL);
         chromeDriver.get(finalBingURL);
         WebDriverWait wait = new WebDriverWait(chromeDriver, 4);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(bingSearchBarXPath)));
-//        WebElement searchBar = chromeDriver.findElement(By.xpath(bingSearchBarXPath));
-//        ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].value='" + getHotStock() + " Stock" + "'", searchBar);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"sa_ul\"]")));
-//        searchBar.sendKeys(Keys.ENTER);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(bingResultsXPath)));
 
         if (!chromeDriver.getPageSource().contains("Data from Refinitiv") && !chromeDriver.getPageSource().contains("fin_mc") && (!chromeDriver.getPageSource().contains("WORLD MARKET") && !chromeDriver.getPageSource().contains("MY WATCHLIST"))) {
@@ -187,7 +182,6 @@ public class Bing {
             options.addArguments("user-data-dir=C:/Users/me/AppData/Local/Google/Chrome/User Data/");
             options.addArguments("profile-directory=Profile 1");
             options.addArguments("--disable-notifications");
-            //options.setHeadless(true);
             System.setProperty("webdriver.chrome.driver", "C:\\Selenium Drivers\\chromedriver.exe");
             chromeDriver = new ChromeDriver(options);
             WebDriverWait wait = new WebDriverWait(chromeDriver, 10);
@@ -195,7 +189,6 @@ public class Bing {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Account")));
             WebElement accountTab = chromeDriver.findElement(By.partialLinkText("Account"));
             accountTab.click();
-            //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/header/div/div[2]/div/div[2]/div[2]/div/header/div/div[2]/div/div[1]/h3")));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/header/div/div[2]/div/div[2]/div[2]/div/header/div/div[2]/div/div[1]/h3")));
             WebElement BP = chromeDriver.findElement(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/header/div/div[2]/div/div[2]/div[2]/div/header/div/div[2]/div/div[1]/h3"));
             setBuyingPower(Double.parseDouble(BP.getText().substring(1, BP.getText().length())));
@@ -259,13 +252,6 @@ public class Bing {
                     WebElement marketPrice = robinhoodDriver.findElement(By.xpath(marketPriceXPath));
                     currentMarketPrice = (Double.parseDouble(marketPrice.getText().substring(1, marketPrice.getText().indexOf(".") + 2)));
                     if (currentMarketPrice < getBpCalc()) {
-////        WebElement searchBar = robinhoodDriver.findElement(By.xpath("//*[@id=\"react-select-search--value\"]/div[2]"));
-////        searchBar.click();
-////        Thread.sleep(400);
-////        ((JavascriptExecutor) robinhoodDriver).executeScript("arguments[0].value='" + stockToBuy + "'", searchBar);
-////        searchBar.sendKeys(stockToBuy);
-////        searchBar.sendKeys(Keys.ENTER);
-////        robinhoodDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
                         WebElement fiveYearView = robinhoodDriver.findElement(By.partialLinkText("5Y"));
                         fiveYearView.click();
                         Thread.sleep(1500);
@@ -362,27 +348,6 @@ public class Bing {
 
 
     }
-
-    /*void checkXPathText(String regex, String strToCheck){ // implement a method to use regex on the dollar amount in the buying power tab of robinhood. Make it so it takes in account COMMAS. ex: (100) -> (1,000,000)
-        Pattern checkRegex = Pattern.compile(regex);      // make it so you can use it on tricky XPaths in the future**
-        Matcher regexMatcher = checkRegex.matcher(strToCheck);
-        lineStorage.add(strToCheck); // fix to problem below
-        while (regexMatcher.find()) {
-            if (regexMatcher.group().trim().endsWith(",")) {
-                stockStorage.add(regexMatcher.group().trim().substring(0, regexMatcher.group().trim().length() - 1));
-            } else if (regexMatcher.group().trim().startsWith("$")) {
-                stockStorage.add(regexMatcher.group().trim().substring(1, regexMatcher.group().trim().length()));
-            } else if (regexMatcher.group().trim().endsWith(".")) {
-                stockStorage.add(regexMatcher.group().trim().substring(0, regexMatcher.group().trim().length() - 1));
-            } else {
-                stockStorage.add(regexMatcher.group().trim());
-            }
-            //lineStorage.add(strToCheck); // MAJOR PROBLEM : ADDS COMMENT n NUMBER OF TIMES, WHERE n IS THE NUMBER OF STOCKS IN THE COMMENT
-            if (regexMatcher.group().length() != 0) {
-                //System.out.println(regexMatcher.group().trim());
-            }
-        }
-    }*/
 
     void completeConfirmationScreen(WebDriver c) {
         JavascriptExecutor js = (JavascriptExecutor) c;
