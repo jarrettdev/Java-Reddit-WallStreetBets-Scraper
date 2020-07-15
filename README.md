@@ -24,7 +24,7 @@
 
 ### More info
 
-- There is a blacklist for comment characters that are mistaked for stocks (verified_baddies.txt) and for characters that were taken out of context.
+- There is a blacklist for comment characters that are mistaked for stocks (verified_baddies.txt) and for characters that were taken out of context. (ex: THICC, YOLO, NUGS)
 
 - After each run, there was a list output of invalid stocks. If there wasn't a prompt on bing with the stock ticker info, the characters got added to the list.
 
