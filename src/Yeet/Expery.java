@@ -39,9 +39,7 @@ public class Expery extends Thread {
             prefs.put("profile.default_content_setting_values.notifications", 2);
 
             ChromeOptions options = new ChromeOptions();
-            // set ExperimentalOption - prefs
             options.setExperimentalOption("prefs", prefs);
-            //options.setHeadless(true);
             System.setProperty("webdriver.chrome.driver", "C:\\Selenium Drivers\\chromedriver.exe");
             chromeDriver = new ChromeDriver(options);
             JavascriptExecutor js = (JavascriptExecutor) chromeDriver;
@@ -61,10 +59,7 @@ public class Expery extends Thread {
             }
 
             List<WebElement> elements2 = chromeDriver.findElements(By.partialLinkText(" Comments")); // making a list of elements
-            //List<WebElement> listOfElements = chromeDriver.findElements(By.xpath("//*[contains(text(), 'more repl')]"));
             for (WebElement element : elements2) {
-                //WebElement element2 = element.findElement(By.partialLinkText("Comment"));
-                //WebElement centerbar = element.findElement(By.xpath("//*[@id=\"t3_bf1wr6\"]/div[1]"));
                 ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].scrollIntoView(false);", element);
                 //element2.click();
                 links.add((element.getAttribute("href")) + "?sort=confidence");
@@ -83,8 +78,6 @@ public class Expery extends Thread {
             List<WebElement> elements3 = chromeDriver.findElements(By.partialLinkText(" Comments"));
             elements3.removeAll(elements2);
             for (WebElement element : elements3) {
-                //WebElement element2 = element.findElement(By.partialLinkText("Comment"));
-                //WebElement centerbar = element.findElement(By.xpath("//*[@id=\"t3_bf1wr6\"]/div[1]"));
                 ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].scrollIntoView(false);", element);
                 //element2.click();
                 links.add((element.getAttribute("href")) + "?sort=confidence");
@@ -92,10 +85,6 @@ public class Expery extends Thread {
                 System.out.println(ha);
                 //Thread.sleep(1000);
                 CBT++;
-                //WebElement exitButton = chromeDriver.findElement(By.xpath("//*[@id=\"SHORTCUT_FOCUSABLE_DIV\"]/div[3]/div/div[1]/div/div[2]/button"));
-                //exitButton.click();
-
-
             }
 
             js.executeScript("window.scrollBy(0,1500)");
@@ -105,17 +94,11 @@ public class Expery extends Thread {
             elements4.removeAll(elements2);
             elements4.removeAll(elements3);
             for (WebElement element : elements4) {
-                //WebElement element2 = element.findElement(By.partialLinkText("Comment"));
-                //WebElement centerbar = element.findElement(By.xpath("//*[@id=\"t3_bf1wr6\"]/div[1]"));
                 ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].scrollIntoView(false);", element);
-                //element2.click();
                 links.add((element.getAttribute("href")) + "?sort=confidence");
                 String ha = element.getAttribute("href");
                 System.out.println(ha);
-                //Thread.sleep(1000);
                 CBT++;
-                //WebElement exitButton = chromeDriver.findElement(By.xpath("//*[@id=\"SHORTCUT_FOCUSABLE_DIV\"]/div[3]/div/div[1]/div/div[2]/button"));
-                //exitButton.click();
 
 
             }
@@ -128,32 +111,17 @@ public class Expery extends Thread {
             elements5.removeAll(elements3);
             elements5.removeAll(elements4);
             for (WebElement element : elements5) {
-                //WebElement element2 = element.findElement(By.partialLinkText("Comment"));
-                //WebElement centerbar = element.findElement(By.xpath("//*[@id=\"t3_bf1wr6\"]/div[1]"));
                 ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].scrollIntoView(false);", element);
-                //element2.click();
                 links.add((element.getAttribute("href")) + "?sort=confidence");
                 String ha = element.getAttribute("href");
                 System.out.println(ha);
-                //Thread.sleep(1000);
                 CBT++;
-                //WebElement exitButton = chromeDriver.findElement(By.xpath("//*[@id=\"SHORTCUT_FOCUSABLE_DIV\"]/div[3]/div/div[1]/div/div[2]/button"));
-                //exitButton.click();
 
                 //TODO: End the need for all these repeating loops. ^^
             }
 
             chromeDriver.close();
             chromeDriver.quit();
-
-            /*titleLink = chromeDriver.findElement(By.cssSelector("h2.s15fpu6f-0.jlakiP"));
-            System.out.println(titleLink.getText());
-            titleLink.click();
-            System.out.println(chromeDriver.getCurrentUrl());
-            Thread.sleep(2000);
-            WebElement exitButton = chromeDriver.findElement(By.cssSelector("button.c_rRg_d32D6ZO5sV8DmMM.p23tea-8.eMGCCj"));
-            exitButton.click();
-            WebElement moreButton = chromeDriver.findElement(By.cssSelector("p.s1i8jpjg-1.cmQAcE"));*/
 
 
         } catch (NoSuchElementException nse) {
