@@ -46,3 +46,5 @@
 - I was also oblivious to the fact that Reddit has an API.
 
 - It's embarrassing that I used Selenium for web scraping but you gotta start somewhere.
+
+- I'm not going to accept pull requests because I want this to stay untouched so I can remember where I started.
