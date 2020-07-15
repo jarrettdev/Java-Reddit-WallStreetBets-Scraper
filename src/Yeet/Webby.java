@@ -51,28 +51,10 @@ public class Webby extends Thread {
             try {
                 doc1 = (Jsoup.connect(link).get());
                 int count = 0;
-//            ArrayList<String> upvoteStorage = new ArrayList<>();
-//            ArrayList<String> userNameStorage = new ArrayList<>();
 
                 for (Element row : doc1.select("div._3tw__eCCe7j-epNCKGXUKk ")) { // **check this one and the one below it periodically, they change from time to time**
                     commentStorage.add(row.select("div._3cjCphgls6DH-irkVaA0GM").text()); // these are the comments right here
-//                for (Element upvoteCount : row.select("span.s5yqo3m-0.hvtvTU")) {
-//                    if (!upvoteCount.text().equals("·")) {
-//                        upvoteStorage.add(upvoteCount.text());
-//                    }
-//                }
 
-                    //System.out.println(upvoteStorage);
-//                for (Element userName : row.select("div.s1qo48hh-0.bThxNZ")) {
-//                    userNameStorage.add(userName.text());
-//                }
-//                userNameStorage.remove(0);
-                    //System.out.println(userNameStorage);
-
-                    //for (Element comment2 : doc1.select("div.s3adwah-2.kdTuBX")) {
-                    //System.out.println(comment2.text());
-                    //commentStorage.add(comment2.text());//beta
-                    //}
                 }
 
                 //for (Element comment : doc1.select("div.c497l3-6.eCeBkc.s1hmcfrd-0.bUYlDz")){
@@ -140,12 +122,6 @@ public class Webby extends Thread {
                     b1.findStock();
                 }
                 System.out.println("Previous Stock: " + stock);
-
-            /*i1.setHotStock(stock);
-            Thread.sleep(11000);
-            i1.purchaseStock();*/
-
-
             }
 
 
@@ -247,11 +223,6 @@ public class Webby extends Thread {
                     g1.findStock();
                 }
                 System.out.println("Previous Stock: " + stock);
-
-            /*i1.setHotStock(stock);
-            Thread.sleep(11000);
-            i1.purchaseStock();*/
-
 
             }
 
@@ -398,18 +369,7 @@ public class Webby extends Thread {
         }
         pw.println("END OF RUN");
         pw.close();
-//        for (String stock : stockStorage) {
-//            for(String badStock : blacklist){
-//                if(stock.equals(badStock)){
-//                    stockStorage.remove(stock);
-//                }else{
-//                    break;
-//                }
-//            }
-//            pw.println(stock);
-//            pw.println("********************");
-//        }
-//        pw.close();
+
     }
 
     void save(String fileName) throws Exception {
@@ -574,12 +534,6 @@ public class Webby extends Thread {
 
                 } else {
                 }
-                //List<WebElement> listOfExtendButtons = chromeDriver.findElements(By.xpath("//*[contains(text(), 'more repl')]"));
-//        for(WebElement e : listOfExtendButtons){
-//            ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].scrollIntoView(false);", e);
-//            e.click();
-//            System.out.println("executed");
-//        }
 
 
                 //System.out.println("done");
@@ -594,8 +548,6 @@ public class Webby extends Thread {
                 //TODO: END THE NEED FOR ALL THESE LOOPS CAUSED BY DYNAMIC LOADING
 
                 //MANY LOOPS WILL FOLLOW TO GRAB A SUFFICIENT AMOUNT OF COMMENTS. SORRY
-                //Boolean morePostsBannerIsPresent = chromeDriver.findElements(By.xpath("//*[contains(text(), 'More posts from the')]")).size() > 0;
-                //WebElement morePostsBanner = chromeDriver.findElement(By.xpath("//*[contains(text(), 'More posts from the')]"));
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), ' comment')]")));
                 WebElement commentCount = chromeDriver.findElement(By.xpath("//*[contains(text(), ' comment')]"));
                 //System.out.println(commentCount.getText());
@@ -778,6 +730,7 @@ public class Webby extends Thread {
                         ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].scrollIntoView(false);", row);
                         commentStorage.add(row.getText());
                     }// LOOPS ARE DONE
+                
                     commentsGrabbed += row10.size();
                     theRatio = ((double) commentsGrabbed / (double) numOfComments);
                 if(theRatio >= .82) //note: 65 works
@@ -802,10 +755,6 @@ public class Webby extends Thread {
 
             }
         }
-        //System.out.println("GRABBY:" + grabRatios);
-        //double ratioSum = grabRatios.stream().mapToDouble(Double::doubleValue).sum();
-        //System.out.println("RATIO SUM: " + ratioSum);
-        //double finalGrabRatio = (ratioSum / grabRatios.size());
         chromeDriver.close();
         chromeDriver.quit();
 
