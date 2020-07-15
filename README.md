@@ -33,7 +33,7 @@
 
 ### Conclusion
 
-- There are a lot of beginner mistakes in the code (poor annotations, not leveraging oop principles, repetitive code), but for me, the best way to learn is to come accross the mistakes by myself. 
+- There are a lot of beginner mistakes in the code (class names, variable names, poor annotations, not leveraging oop principles, repetitive code), but for me, the best way to learn is to come accross the mistakes by myself. 
 
 - This built the foundation for my web scraping skills and I feel like it was the best thing I did as a beginner programmer. This led me to look into Python and appreciate the libraries that are available (requests, bs4, scrapy, json, etc.). 
 
