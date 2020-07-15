@@ -43,4 +43,6 @@
 
 - I was oblivous to the fact that websites have a robots.txt and you can be banned for spamming with Selenium requests.
 
+- I was also oblivious to the fact that Reddit has an API.
+
 - It's embarrassing that I used Selenium for web scraping but you gotta start somewhere.
