@@ -112,18 +112,6 @@ public class Investopedia extends Thread {
             System.setProperty("webdriver.chrome.driver", "C:\\Selenium Drivers\\chromedriver.exe");
             chromeDriver = new ChromeDriver(options);
             chromeDriver.get("https://www.investopedia.com/simulator/trade/tradestock.aspx");
-//            Thread.sleep(6000);
-//            WebElement login1 = chromeDriver.findElement(By.xpath("/html/body/section[1]/div[1]/header/div/div/a[2]/span"));
-//            login1.click();
-//            Thread.sleep(1000);
-//            WebElement emailBox1 = chromeDriver.findElement(By.xpath("//*[@id=\"username\"]"));
-//            WebElement passwordBox1 = chromeDriver.findElement(By.xpath("//*[@id=\"password\"]"));
-//            ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].value='camlataspi@desoz.com'", emailBox1);
-//            //Thread.sleep(1000);
-//            ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].value='Yoot123$'", passwordBox1);
-//            WebElement loginButton1 = chromeDriver.findElement(By.xpath("//*[@id=\"basic-login\"]/div[1]/form/div/div[7]/div[1]/button"));
-//            loginButton1.click();
-//            Thread.sleep(3000);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -144,11 +132,7 @@ public class Investopedia extends Thread {
             investopediaStockPreviewPrice = "//*[@id=\"submitOrder\"]";
             Robinhood r1 = new Robinhood();
             setPurchaseComplete(false);
-            //ArrayList<String> tabs2 = new ArrayList<String>(chromeDriver.getWindowHandles());
             chromeDriver.get("https://www.investopedia.com/simulator/trade/tradestock.aspx");
-            //String originalHandle = chromeDriver.getWindowHandle();
-
-            //chromeDriver.switchTo().window(originalHandle); // :)
             WebElement stockSearchBar = chromeDriver.findElement(By.xpath("//*[@id=\"symbolTextbox\"]"));
             WebElement stockQuantityField = chromeDriver.findElement(By.xpath("//*[@id=\"quantityTextbox\"]"));
             WebElement previewOrderButton = chromeDriver.findElement(By.xpath("//*[@id=\"previewButton\"]"));
@@ -195,30 +179,6 @@ public class Investopedia extends Thread {
             e.printStackTrace();
         }
 
-//            stockSearchBar.sendKeys(Keys.ENTER);
-//            Thread.sleep(3000);
-//            WebElement tradeButton = chromeDriver.findElement(By.xpath("/html/body/div[2]/div[3]/div[1]/div[1]/div/div[2]/table/tbody/tr[1]/td[4]/button"));
-//            ((JavascriptExecutor) chromeDriver).executeScript("arguments[0].scrollIntoView(true);", stockSearchBar);
-//            Thread.sleep(1000);
-//            tradeButton.click();
-//            Thread.sleep(2500);
-//            WebElement stockQuantityBox = chromeDriver.findElement(By.xpath("//*[@id=\"shares\"]"));
-//            stockQuantityBox.sendKeys(Keys.BACK_SPACE);
-//            stockQuantityBox.sendKeys("1");
-//            Thread.sleep(4000);
-//            WebElement submitOrderButton = chromeDriver.findElement(By.xpath("/html/body/div[5]/div/div[1]/form/div[3]/div[1]/button[2]"));
-//            submitOrderButton.click();
-//            Thread.sleep(5000);
-//            WebElement confirmationEscapeButton = chromeDriver.findElement(By.xpath("/html/body/div[5]/button"));
-//            confirmationEscapeButton.click();
-        //chromeDriver.switchTo().window(tabs2.get(0));
-//            for (String handle : chromeDriver.getWindowHandles()) { //thanks stackoverflow
-//                if (!handle.equals(originalHandle)) {
-//                    chromeDriver.switchTo().window(handle);
-//                    chromeDriver.close();
-//                }
-//            }
-//            chromeDriver.switchTo().window(originalHandle); // :)
 
     }
 
@@ -394,13 +354,7 @@ public class Investopedia extends Thread {
                 //options.setHeadless(true);
                 robinhoodDriver.get(fixedUrl);
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("5Y")));
-////        WebElement searchBar = robinhoodDriver.findElement(By.xpath("//*[@id=\"react-select-search--value\"]/div[2]"));
-////        searchBar.click();
-////        Thread.sleep(400);
-////        ((JavascriptExecutor) robinhoodDriver).executeScript("arguments[0].value='" + stockToBuy + "'", searchBar);
-////        searchBar.sendKeys(stockToBuy);
-////        searchBar.sendKeys(Keys.ENTER);
-////        robinhoodDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+                
                 WebElement fiveYearView = robinhoodDriver.findElement(By.partialLinkText("5Y"));
                 fiveYearView.click();
                 Thread.sleep(1500);
@@ -516,13 +470,6 @@ class Robinhood extends Thread {
             robinhoodDriver = new ChromeDriver(options);
             robinhoodDriver.get(fixedUrl);
             Thread.sleep(2000);
-//        WebElement searchBar = robinhoodDriver.findElement(By.xpath("//*[@id=\"react-select-search--value\"]/div[2]"));
-//        searchBar.click();
-//        Thread.sleep(400);
-//        ((JavascriptExecutor) robinhoodDriver).executeScript("arguments[0].value='" + stockToBuy + "'", searchBar);
-//        searchBar.sendKeys(stockToBuy);
-//        searchBar.sendKeys(Keys.ENTER);
-//        robinhoodDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             WebElement fiveYearView = robinhoodDriver.findElement(By.partialLinkText("5Y"));
             fiveYearView.click();
             Thread.sleep(1000);
