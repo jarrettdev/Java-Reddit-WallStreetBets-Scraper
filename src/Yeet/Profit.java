@@ -83,7 +83,6 @@ public class Profit extends Thread {
             options.addArguments("user-data-dir=C:/Users/me/AppData/Local/Google/Chrome/User Data/");
             options.addArguments("profile-directory=Profile 1");
             options.addArguments("--disable-notifications");
-            //options.setHeadless(true);
             System.setProperty("webdriver.chrome.driver", "C:\\Selenium Drivers\\chromedriver.exe");
             chromeDriver = new ChromeDriver(options);
             WebDriverWait wait = new WebDriverWait(chromeDriver, 10);
@@ -161,12 +160,10 @@ public class Profit extends Thread {
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/div/main/div[2]/div[2]/div/form/div[1]/div[2]/div/div[2]/button")));
         WebElement reviewOrderButton = chromeDriver.findElement(By.xpath(reviewOrderButtonXPath));
         reviewOrderButton.click();
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/div/main/div[2]/div[2]/div/form/div[1]/div[3]/div/div[2]/button[1]/span")));
-        //System.out.println((buyingPowerTab.getText().substring(buyingPowerTab.getText().indexOf("$"), buyingPowerTab.getText().indexOf(" "))));
         Thread.sleep(2000);
         WebElement submitPurchase = chromeDriver.findElement(By.xpath(submitOrderButtonXPath));
-        //WebElement submitPurchase = robinhoodDriver.findElement(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/div/main/div[2]/div[2]/div/form/div[1]/div[3]/div/div[2]/button[1]/span"));
-        //submitPurchase.click();
+        WebElement submitPurchase = robinhoodDriver.findElement(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div/div/main/div[2]/div[2]/div/form/div[1]/div[3]/div/div[2]/button[1]/span"));
+        submitPurchase.click();
 
         }catch (Exception e){
             e.printStackTrace();
