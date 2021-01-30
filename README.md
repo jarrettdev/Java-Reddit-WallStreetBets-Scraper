@@ -10,7 +10,7 @@
 
 
 
--I started this project in October 2018 in and worked on it until November 2019. 
+-I started this project in October 2018 and worked on it until November 2019. 
 
 - This is a Java program that would take the hot stock tickers that users were talking about on Reddit's infamous [WallStreetBets](https://www.reddit.com/r/wallstreetbets/) and research the stocks on Bing to determine whether to buy the stock or not. 
 
